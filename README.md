@@ -8,7 +8,8 @@
 
 # Supported tags and respective `Dockerfile` links
 
-- [`latest`, `15.0`](https://github.com/aclemons/slackrepo-docker/blob/master/slackware-15.0/Dockerfile)
+- [`latest`, `slack-15.0`](https://github.com/aclemons/slackrepo-docker/blob/master/Dockerfile) - latest slackware stable release
+- [`slack-current`](https://github.com/aclemons/slackrepo-docker/blob/master/Dockerfile) - slackware current
 
 # Quick reference (cont.)
 
