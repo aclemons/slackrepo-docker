@@ -27,6 +27,23 @@ It was originally built by [idlemoor](https://github.com/idlemoor/slackrepo).
 
 > [slackrepo](https://github.com/aclemons/slackrepo)
 
+# How to use
+
+Running slackrepo in a docker image means you always have a clean environment. You probably want to bind mount some directories so that the the output ends up on the host. Something like this should get your started:
+
+```sh
+mkdir -p $HOME/slackrepo
+docker run --rm -it --cap-add SYS_ADMIN -v $HOME/slackrepo:/var/lib/slackrepo/SBo aclemons/slackrepo /bin/bash -ls
+```
+
+Then build as your normally would with slackrepo:
+
+```sh
+slackrepo build my-package
+```
+
+If you want to build i586 or arm packages, you can pass `--platform linux/386` or `--platform linux/arm` in your docker run invocation.
+
 # License
 
 The Docker image creation scripts contained under the repository slackrepo-docker are licensed under the MIT license.
