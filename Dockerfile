@@ -8,3 +8,5 @@ RUN echo "Using base image $base_image"
 COPY scripts/install_slackrepo.sh /
 RUN bash /install_slackrepo.sh && rm /install_slackrepo.sh
 RUN if [ "$(uname -m)" = "aarch64" ] ; then echo "AARCH64=1" >> /etc/slackrepo/slackrepo_ponce.conf ; fi
+
+CMD ["su", "-"]
