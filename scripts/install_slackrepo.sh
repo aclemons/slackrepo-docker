@@ -30,7 +30,7 @@ export TERSE=0
 
 wget -O - https://github.com/SlackBuildsOrg/slackbuilds/tarball/master | tar xz
 
-export TAG=_jenkins
+export TAG=_acl
 (
   cd SlackBuildsOrg-slackbuilds-*
 
