@@ -5,6 +5,9 @@ name: Slackware 15.0 slackrepo Docker Image
   push:
     branches:
       - "master"
+    paths:
+      - 'Dockerfile'
+      - 'scripts/install_slackrepo.sh'
 
 concurrency:
   group: docker-15.0-slackrepo-${{ github.head_ref || github.ref_name }}
