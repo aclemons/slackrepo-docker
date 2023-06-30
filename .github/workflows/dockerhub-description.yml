@@ -1,5 +1,6 @@
+---
 name: Update Docker Hub Description
-on:
+"on":
   push:
     branches:
       - master
@@ -10,12 +11,12 @@ jobs:
   dockerHubDescription:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@c85c95e3d7251135ab7dc9ce3241c5835cc595a9 # v3
+      - uses: actions/checkout@c85c95e3d7251135ab7dc9ce3241c5835cc595a9 # v3.5.3
 
-    - name: Docker Hub Description
-      uses: peter-evans/dockerhub-description@dc67fad7001ef9e8e3c124cb7a64e16d0a63d864 # v3
-      with:
-        username: ${{ secrets.DOCKERHUB_USERNAME }}
-        password: ${{ secrets.DOCKERHUB_TOKEN }}
-        repository: aclemons/slackrepo
-        short-description: ${{ github.event.repository.description }}
+      - name: Docker Hub Description
+        uses: peter-evans/dockerhub-description@dc67fad7001ef9e8e3c124cb7a64e16d0a63d864 # v3.4.2
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+          repository: aclemons/slackrepo
+          short-description: ${{ github.event.repository.description }}
