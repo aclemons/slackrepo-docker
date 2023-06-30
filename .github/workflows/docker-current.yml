@@ -5,9 +5,9 @@ name: Slackware -current slackrepo Docker Image
   push:
     branches:
       - "master"
-    # paths:
-    #   - 'Dockerfile-current'
-    #   - 'scripts/install_slackrepo.sh'
+    paths:
+      - 'Dockerfile.current'
+      - 'scripts/install_slackrepo.sh'
 
 concurrency:
   group: docker-current-slackrepo-${{ github.head_ref || github.ref_name }}
