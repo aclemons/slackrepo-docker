@@ -1,4 +1,4 @@
-FROM aclemons/slackware:current-full@sha256:9780bb8e66d50e95bde28a43c918aecaa7c10f4ba6dd7047c7b5f4bb91ca25db
+FROM aclemons/slackware:current-full@sha256:032a74eca07d16b30fe5d168c6ca3765e041510fb28f2e3a0336e0ce73980da4
 
 COPY scripts/install_slackrepo.sh /
 RUN ./install_slackrepo.sh && rm /install_slackrepo.sh
