@@ -70,6 +70,7 @@ rm -rf /tmp/SBo
 
 {
   find /boot -name 'uImage-armv7-*' -print0 | xargs -0 -I {} basename {} | cut -d- -f3-
+  find /boot -name 'zImage-armv7-*' -print0 | xargs -0 -I {} basename {} | cut -d- -f3-
   find /boot -name 'Image-armv8-*' -print0 | xargs -0 -I {} basename {} | cut -d- -f3-
   find /boot -name 'vmlinuz-generic-smp-*' -print0 | xargs -0 -I {} basename {} | cut -d- -f4-
   find /boot -name 'vmlinuz-generic-*' -print0 | xargs -0 -I {} basename {} | cut -d- -f3-
