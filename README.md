@@ -29,7 +29,7 @@ It was originally built by [idlemoor](https://github.com/idlemoor/slackrepo).
 
 # How to use
 
-Running slackrepo in a docker image means you always have a clean environment. You probably want to bind mount some directories so that the the output ends up on the host. Something like this should get your started:
+Running slackrepo in a docker image means you always have a clean environment. You probably want to bind mount some directories so that the the output ends up on the host. Something like this should get you started:
 
 ```sh
 mkdir -p $HOME/slackrepo
