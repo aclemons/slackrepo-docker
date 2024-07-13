@@ -1,0 +1,67 @@
+---
+name: Seed cache
+
+on:
+  push:
+    branches: master
+
+concurrency:
+  group: ${{ github.workflow }}
+  cancel-in-progress: false
+
+jobs:
+  seed-cache:
+    name: Seed various caches from the master branch for ci checks
+    runs-on: ubuntu-22.04
+    permissions:
+      contents: read
+      actions: write # to delete gha caches
+    env:
+      # renovate: datasource=pypi depName=pre-commit
+      PRE_COMMIT_VERSION: 3.7.1
+    steps:
+      - uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4.1.7
+        with:
+          show-progress: false
+
+      - name: Configure pre-commit repo cache
+        id: pre-commit-repo-cache
+        uses: actions/cache@0c45773b623bea8c8e75f6c82b208c3cf94ea4f9 # v4.0.2
+        with:
+          path: ~/.cache/pre-commit
+          key: ${{ runner.os }}-pre-commit-repo-${{ env.pythonLocation }}-${{ hashFiles('.pre-commit-config.yaml') }}
+
+      - name: Clean orphaned pre-commit repo caches
+        if: steps.pre-commit-repo-cache.outputs.cache-hit != 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh cache list --repo "${{ github.repository }}" --ref refs/heads/master --key ${{ runner.os }}-pre-commit-repo | cut -f 2 | parallel -I xx gh cache delete --repo "${{ github.repository }}" || true
+
+      - name: Configure pre-commit install cache
+        uses: actions/cache@0c45773b623bea8c8e75f6c82b208c3cf94ea4f9 # v4.0.2
+        id: pre-commit-install-cache
+        with:
+          path: ~/.pre-commit-venv
+          key: ${{ runner.os }}-pre-commit-venv-${{ env.PRE_COMMIT_VERSION }}-${{ env.pythonLocation }}
+
+      - name: Clean orphaned pre-commit install caches
+        if: steps.pre-commit-install-cache.outputs.cache-hit != 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh cache list --repo "${{ github.repository }}" --ref refs/heads/master --key ${{ runner.os }}-pre-commit-venv | cut -f 2 | parallel -I xx gh cache delete --repo "${{ github.repository }}" || true
+
+      - name: Install pre-commit
+        if: steps.pre-commit-install-cache.outputs.cache-hit != 'true'
+        run: |
+          python -m venv ~/.pre-commit-venv
+          # shellcheck source=/dev/null
+          . ~/.pre-commit-venv/bin/activate
+          pip install pre-commit==${{ env.PRE_COMMIT_VERSION }}
+
+      - name: Run pre-commit
+        run: |
+          # shellcheck source=/dev/null
+          . ~/.pre-commit-venv/bin/activate
+          pre-commit run --all-files --color=always --show-diff-on-failure
