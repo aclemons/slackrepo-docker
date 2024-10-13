@@ -39,3 +39,19 @@ repos:
     rev: v2.3.0
     hooks:
       - id: codespell
+
+  # Match old pre-commit prettier mirror that has been archived.
+  - repo: local
+    hooks:
+      - id: prettier
+        name: prettier
+        description: ''
+        entry: prettier --write --ignore-unknown
+        language: node
+        types: [text]
+        args: []
+        require_serial: false
+        additional_dependencies:
+          # renovate: datasource=npm
+          - prettier@3.3.3
+        exclude: .github/workflows/.*.yml|.pre-commit-config.yaml|.github/renovate.json

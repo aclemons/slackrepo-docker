@@ -44,10 +44,10 @@ slackrepo build my-package
 
 If you want to build i586 or arm packages, you can pass `--platform linux/386` or `--platform linux/arm` in your docker run invocation.
 
-# License
+# Licence
 
-The Docker image creation scripts contained under the repository slackrepo-docker are licensed under the MIT license.
+The Docker image creation scripts contained under the repository slackrepo-docker are licensed under the MIT licence.
 
-As with all Docker images, these likely also contain other software which may be under other licenses (such as Bash, etc from the base distribution, along with any direct or indirect dependencies of the primary software being contained).
+As with all Docker images, these likely also contain other software which may be under other licences (such as Bash, etc from the base distribution, along with any direct or indirect dependencies of the primary software being contained).
 
-As for any pre-built image usage, it is the image user's responsibility to ensure that any use of this image complies with any relevant licenses for all software contained within.
+As for any pre-built image usage, it is the image user's responsibility to ensure that any use of this image complies with any relevant licences for all software contained within.
