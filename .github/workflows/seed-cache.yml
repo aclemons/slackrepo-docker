@@ -26,7 +26,7 @@ jobs:
 
       - name: Configure pre-commit repo cache
         id: pre-commit-repo-cache
-        uses: actions/cache@3624ceb22c1c5a301c8db4169662070a689d9ea8 # v4.1.1
+        uses: actions/cache@6849a6489940f00c2f30c0fb92c6274307ccb58a # v4.1.2
         with:
           path: ~/.cache/pre-commit
           key: ${{ runner.os }}-pre-commit-repo-${{ env.pythonLocation }}-${{ hashFiles('.pre-commit-config.yaml') }}
@@ -39,7 +39,7 @@ jobs:
           gh cache list --repo "${{ github.repository }}" --ref refs/heads/master --key ${{ runner.os }}-pre-commit-repo | cut -f 2 | parallel -I xx gh cache delete --repo "${{ github.repository }}" || true
 
       - name: Configure pre-commit install cache
-        uses: actions/cache@3624ceb22c1c5a301c8db4169662070a689d9ea8 # v4.1.1
+        uses: actions/cache@6849a6489940f00c2f30c0fb92c6274307ccb58a # v4.1.2
         id: pre-commit-install-cache
         with:
           path: ~/.pre-commit-venv
