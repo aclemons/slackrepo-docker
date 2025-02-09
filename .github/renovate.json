@@ -4,6 +4,16 @@
     {
       "customType": "regex",
       "fileMatch": [
+        "^.pre-commit-config.yaml$"
+      ],
+      "matchStrings": [
+        "# renovate: datasource=(?<datasource>.*?)( versioning=(?<versioning>.*?))?\\s+-\\s+['\"]?(?<depName>@?[^@]+)(?:@(?<currentValue>[^'\"\\s]*))?"
+      ],
+      "versioningTemplate": "{{#if versioning}}{{{versioning}}}{{else}}semver{{/if}}"
+    },
+    {
+      "customType": "regex",
+      "fileMatch": [
         "(^|/)(workflow-templates|\\.(?:github|gitea|forgejo)/(?:workflows|actions))/.+\\.ya?ml$",
         "(^|/)action\\.ya?ml$"
       ],
