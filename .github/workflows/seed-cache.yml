@@ -18,7 +18,7 @@ jobs:
       actions: write # to delete gha caches
     env:
       # renovate: datasource=pypi depName=pre-commit
-      PRE_COMMIT_VERSION: 4.4.0
+      PRE_COMMIT_VERSION: 4.5.0
     steps:
       - uses: actions/checkout@93cb6efe18208431cddfb8368fd83d5badbf9bfd # v5.0.1
         with:
