@@ -42,7 +42,7 @@ jobs:
           python -m venv ~/.pre-commit-venv
           # shellcheck source=/dev/null
           . ~/.pre-commit-venv/bin/activate
-          pip install pre-commit==${{ env.PRE_COMMIT_VERSION }}
+          pip install "pre-commit==$PRE_COMMIT_VERSION"
 
       - name: Run pre-commit
         run: |
