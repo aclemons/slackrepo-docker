@@ -35,6 +35,11 @@ repos:
     hooks:
       - id: actionlint-docker
 
+  - repo: https://github.com/zizmorcore/zizmor-pre-commit
+    rev: v1.19.0
+    hooks:
+      - id: zizmor
+
   - repo: https://github.com/codespell-project/codespell
     rev: v2.4.1
     hooks:
