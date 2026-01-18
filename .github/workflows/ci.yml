@@ -24,13 +24,13 @@ jobs:
           persist-credentials: false
 
       - name: Configure pre-commit repo cache
-        uses: actions/cache/restore@9255dc7a253b0ccc959486e2bca901246202afeb # v5.0.1
+        uses: actions/cache/restore@8b402f58fbc84540c8b491a91e594a4576fec3d7 # v5.0.2
         with:
           path: ~/.cache/pre-commit
           key: ${{ runner.os }}-pre-commit-repo-${{ env.pythonLocation }}-${{ hashFiles('.pre-commit-config.yaml') }}
 
       - name: Configure pre-commit install cache
-        uses: actions/cache/restore@9255dc7a253b0ccc959486e2bca901246202afeb # v5.0.1
+        uses: actions/cache/restore@8b402f58fbc84540c8b491a91e594a4576fec3d7 # v5.0.2
         id: pre-commit-install-cache
         with:
           path: ~/.pre-commit-venv
