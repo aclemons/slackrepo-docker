@@ -58,5 +58,5 @@ repos:
         require_serial: false
         additional_dependencies:
           # renovate: datasource=npm
-          - prettier@3.7.4
+          - prettier@3.8.1
         exclude: .github/workflows/.*.yml|.pre-commit-config.yaml|.github/renovate.json
