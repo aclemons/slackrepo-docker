@@ -1,4 +1,3 @@
----
 name: Slackware -current slackrepo Docker Image
 
 on:
