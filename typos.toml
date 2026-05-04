@@ -1,0 +1,16 @@
+[files]
+ignore-hidden = false
+
+[default]
+extend-ignore-re = [
+  # https://github.com/crate-ci/typos/blob/master/crates/typos-cli/tests/cmd/ignore-line.in/_typos.toml
+  "(?Rm)^.*(#|//|--)\\s*spellchecker:disable-line$",
+  # https://github.com/crate-ci/typos/blob/master/crates/typos-cli/tests/cmd/ignore-next-line.in/_typos.toml
+  "(#|//|--)\\s*spellchecker:ignore-next-line\\n.*",
+  # https://github.com/crate-ci/typos/blob/master/crates/typos-cli/tests/cmd/ignore-block.in/_typos.toml
+  "(?s)(#|//|--|/\\*)\\s*spellchecker:off.*?\\n\\s*(#|//|--|\\*/)\\s*spellchecker:on",
+  # markdown html inline
+  "(?Rm)^.*<!--\\s*spellchecker:disable-line\\s*-->$",
+  # markdown html block
+  "(?s)<!--\\s*spellchecker:off.*?-->.*?<!--\\s*spellchecker:on\\s*-->",
+]

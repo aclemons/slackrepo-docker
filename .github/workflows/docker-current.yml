@@ -55,14 +55,14 @@ jobs:
         with:
           show-progress: false
           persist-credentials: false
-      - name: Set artifact name
+      - name: Set artefact name
         run: |
           if [ "${{ matrix.platform }}" = "linux/386" ] ; then
-            printf 'ARTIFACT_NAME=digests-386\n' >> "$GITHUB_ENV"
+            printf 'ARTEFACT_NAME=digests-386\n' >> "$GITHUB_ENV"
           elif [ "${{ matrix.platform }}" = "linux/amd64" ] ; then
-            printf 'ARTIFACT_NAME=digests-amd64\n' >> "$GITHUB_ENV"
+            printf 'ARTEFACT_NAME=digests-amd64\n' >> "$GITHUB_ENV"
           elif [ "${{ matrix.platform }}" = "linux/arm64/v8" ] ; then
-            printf 'ARTIFACT_NAME=digests-arm64\n' >> "$GITHUB_ENV"
+            printf 'ARTEFACT_NAME=digests-arm64\n' >> "$GITHUB_ENV"
           else
             echo "Unhandled platform ${{ matrix.platform }}"
             exit 1
@@ -112,7 +112,7 @@ jobs:
       - name: Upload digest
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
         with:
-          name: ${{ env.ARTIFACT_NAME }}
+          name: ${{ env.ARTEFACT_NAME }}
           path: /tmp/digests/*
           if-no-files-found: error
           retention-days: 1
