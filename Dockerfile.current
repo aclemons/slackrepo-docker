@@ -1,6 +1,6 @@
 # syntax=docker/dockerfile:1.27.1@sha256:4edf897a3ffa55b89f906fc8cc78afdb3f1834cc9c7083565e611a8a7d5fe99e
 
-FROM aclemons/slackware:current-full@sha256:0a2a3ff64ac9e85f8bfbc5148081ee65a205b8d45386a9516a7f7b3812391871
+FROM aclemons/slackware:current-full@sha256:6ee0871a0c52f4ae9b1b6017384d34b29e809070840269ec1f9ae0be6a4cc4c6
 
 COPY scripts/install_slackrepo.sh /
 RUN ./install_slackrepo.sh && rm /install_slackrepo.sh
